@@ -13,7 +13,9 @@ def genera_archivo_aleatorio(nombre,tamaño):
     """
     
     try:
-        chars = ''.join([random.choice(string.ascii_letters) for i in range(tamaño*tamaño)]) #1
+        #chars = ''.join([random.choice(string.ascii_letters) for i in range(tamaño*tamaño)]) #1
+        chars = ''.join( [str(time.time()) + ': ' + random.choice(string.ascii_letters)  for i in range(tamaño*tamaño)]) #1
+        
         with open(nombre, 'w') as a:
                     a.write(chars)
     finally:
@@ -21,9 +23,9 @@ def genera_archivo_aleatorio(nombre,tamaño):
     
 
 # Crea thread 1 y lo referencia con t1
-t1 = Thread(target=genera_archivo_aleatorio, args=("C:\\Users\\abald\\OneDrive\\Documentos\\GitHub\\TP_ARQ_Threads\\archivos\\archivos.txt",tamaño)
+t1 = Thread(target=genera_archivo_aleatorio, args=("C:\\Users\\abald\\OneDrive\\Documentos\\GitHub\\TP_ARQ_Threads\\archivos\\archivost1.txt",2048,))
 # Crea thread 2 y lo referencia con t2
-t2 = Thread(target=genera_archivo_aleatorio, args=("C:\\Users\\abald\\OneDrive\\Documentos\\GitHub\\TP_ARQ_Threads\\archivos\\archivos.txt",tamaño)
+t2 = Thread(target=genera_archivo_aleatorio, args=("C:\\Users\\abald\\OneDrive\\Documentos\\GitHub\\TP_ARQ_Threads\\archivos\\archivost2.txt",2048,))
 
 # Marca de tiempo
 start = time.time()
@@ -36,4 +38,4 @@ end = time.time()
 
 # tiempo consumido
 print('Tiempo consumido en segundos -', end - start)
-genera_archivo_aleatorio("C:\\Users\\abald\\OneDrive\\Documentos\\GitHub\\TP_ARQ_Threads\\archivos\\archivos.txt",tamaño)
+#genera_archivo_aleatorio("C:\\Users\\abald\\OneDrive\\Documentos\\GitHub\\TP_ARQ_Threads\\archivos\\archivos.txt",tamaño)

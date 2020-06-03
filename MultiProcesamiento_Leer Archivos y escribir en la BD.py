@@ -25,15 +25,18 @@ def insertar_BD(path,nombre):
         password = 't1'
         cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password, timeout=1)
         cnxn.timeout = 1
-        cursor = cnxn.cursor()               
-        
-        cantlineas=0                
-        
+        cursor = cnxn.cursor()                       
+        cantlineas=0                     
         tsql = "INSERT INTO " + nombre + "(linea) VALUES (?);"       
         archentrada=open(path+nombre+".txt","rt")
         for linea in archentrada:
-            with cursor.execute(tsql,linea):
-                print ('Insertado OK!'+nombre)
+            while True:
+                try:
+                    with cursor.execute(tsql,linea):
+                        print('Insertado OK!'+nombre)
+                        break
+                except pyodbc.DatabaseError:
+                    print('Error en INSERT'+nombre)
             cantlineas+=1
     except FileNotFoundError as mensaje:
         print("No se puede abrir el archivo: ", mensaje)

@@ -21,8 +21,13 @@ def insertar_BD(path,nombre):
         tsql = "INSERT INTO " + nombre + "(linea) VALUES (?);"       
         archentrada=open(path+nombre+".txt","rt")
         for linea in archentrada:
-            with cursor.execute(tsql,linea):
-                print ('Insertado OK!'+nombre)
+            while True:
+                try:
+                    with cursor.execute(tsql,linea):
+                        print('Insertado OK!'+nombre)
+                        break
+                except pyodbc.DatabaseError:
+                    print('Error en INSERT'+nombre)
             cantlineas+=1
     except FileNotFoundError as mensaje:
         print("No se puede abrir el archivo: ", mensaje)

@@ -33,10 +33,10 @@ def insertar_BD(path,nombre):
             while True:
                 try:
                     with cursor.execute(tsql,linea):
-                        print('Insertado OK!'+nombre)
+                        print('Insertado OK! / '+nombre)
                         break
                 except pyodbc.DatabaseError:
-                    print('Error en INSERT'+nombre)
+                    print('Error en INSERT en '+nombre)
             cantlineas+=1
     except FileNotFoundError as mensaje:
         print("No se puede abrir el archivo: ", mensaje)

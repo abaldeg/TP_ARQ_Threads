@@ -25,9 +25,9 @@ def genera_archivo_aleatorio(nombre,tamaño):
             pass       
     
 # Crea thread 1 y lo referencia con t1
-t1 = Thread(target=genera_archivo_aleatorio, args=("C:\\Users\\abald\\OneDrive\\Documentos\\GitHub\\TP_ARQ_Threads\\archivos\\archivo_t1.txt",tamaño,))
+t1 = Thread(target=genera_archivo_aleatorio, args=("C:\\Users\\abald\\OneDrive\\Documentos\\GitHub\\TP_ARQ_Threads\\archivos\\archivo_t5.txt",tamaño,))
 # Crea thread 2 y lo referencia con t2
-t2 = Thread(target=genera_archivo_aleatorio, args=("C:\\Users\\abald\\OneDrive\\Documentos\\GitHub\\TP_ARQ_Threads\\archivos\\archivo_t2.txt",tamaño,))
+t2 = Thread(target=genera_archivo_aleatorio, args=("C:\\Users\\abald\\OneDrive\\Documentos\\GitHub\\TP_ARQ_Threads\\archivos\\archivo_t6.txt",tamaño,))
 
 # Marca de tiempo
 start = time.time()

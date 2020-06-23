@@ -16,10 +16,11 @@ def insertar_BD(path,nombre):
         username = 't1'
         password = 't1'
         cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password, timeout=1)
-        cnxn.timeout = 1
+        #cnxn.timeout = 1
         cursor = cnxn.cursor()                       
         cantlineas=0                     
-        tsql = "INSERT INTO " + nombre + "(linea) VALUES (?);"       
+        #tsql = "INSERT INTO " + nombre + "(linea) VALUES (?);"         
+        tsql = "INSERT INTO Archivo_Identity" + "(linea) VALUES (?);"             
         archentrada=open(path+nombre+".txt","rt")
         for linea in archentrada:
             while True:
@@ -49,11 +50,11 @@ if __name__ == '__main__':
     r1 = pool.apply_async(insertar_BD, [path, "archivo_t1"])
     r2 = pool.apply_async(insertar_BD, [path, "archivo_t2"])
     r3 = pool.apply_async(insertar_BD, [path, "archivo_t3"])
-    r4 = pool.apply_async(insertar_BD, [path, "archivo_t4"])
+    r4 = pool.apply_async(insertar_BD, [path, "archivo_t4"])    
     r5 = pool.apply_async(insertar_BD, [path, "archivo_t5"])
     r6 = pool.apply_async(insertar_BD, [path, "archivo_t6"])
     r7 = pool.apply_async(insertar_BD, [path, "archivo_t7"])
-    r8 = pool.apply_async(insertar_BD, [path, "archivo_t8"])
+    r8 = pool.apply_async(insertar_BD, [path, "archivo_t8"])    
     pool.close()
     pool.join()
     end = time.time()

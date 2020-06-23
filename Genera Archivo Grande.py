@@ -3,7 +3,7 @@ import string
 import time
 from threading import Thread
 
-tamaño=1024
+tamaño=16384
 
 def genera_archivo_aleatorio(nombre,tamaño):
     """generate big random letters/alphabets to a file
@@ -14,7 +14,7 @@ def genera_archivo_aleatorio(nombre,tamaño):
     
     try:
         #chars = ''.join([random.choice(string.ascii_letters) for i in range(tamaño*tamaño)]) #1
-        chars = ' '.join( [str(time.time()) + ': ' + random.choice(string.ascii_letters) + '\n' for i in range(tamaño*tamaño)]) #1
+        chars = ' '.join( [str(time.time()) + ': ' + random.choice(string.ascii_letters) + '\n' for i in range(tamaño)]) #1
         
         with open(nombre, 'wt') as a:
                     a.write(chars)
